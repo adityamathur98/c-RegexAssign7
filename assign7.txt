@@ -1,0 +1,366 @@
+Q1.  user se 3 input lena agr unka avg 50 se zada aya then ek function call karna hai us function mai 20-30 print 
+     karna hai ab agar uska avg 50 se kam ata hai to fir function calling 1-20 print karna hai
+
+Ans. #include <bits/stdc++.h>
+using namespace std;
+
+//Function Decleration
+
+void print20To30Num(){
+    for(int i=20; i <= 30; i++){
+        cout << i << endl;
+    }
+}
+
+void print1To20Num(){
+    for(int i=1; i <= 20; i++){
+        cout << i << endl;
+    }
+}
+
+float getAvgOfNum(const int &n1, const int n2, const int n3){
+    return (n1 + n2 + n3) / 3;
+}
+
+int main()
+{
+    float num1, num2, num3;
+    
+    cout << "Enter the First Number: ";
+    cin >> num1;
+    
+    cout << "Enter the Second Number: ";
+    cin >> num2;
+    
+    cout << "Enter the Third Number: ";
+    cin >> num3;
+    
+    float avgOfNums = getAvgOfNum(num1, num2, num3);
+    
+    if (avgOfNums > 50){
+        print20To30Num();
+    } else {
+        print1To20Num();
+    }
+    
+    return 0;
+}
+
+Q2. 3 input lena hai usme se jo max hoga agr wo b hota hai to ek function call karna hai aur us function mai 
+    5 ka factorial print karwana , max agar c hota hai to fir c powerof2 ha ya nahi check karna hai, agr max 
+    a hota hai to fir apna nam print karna hai.
+
+Ans. #include <bits/stdc++.h>
+using namespace std;
+
+//Function Decleration
+
+int factorialOf5(){
+    int factorail = 1;
+    int i = 5;
+    while(i > 0){
+        factorail *= i;
+        i--;
+    }
+    
+    return factorail;
+}
+
+int getMaxNum(const int &n1, const int &n2, const int &n3){
+    int greatestNum = n1;
+    
+    if (greatestNum < n2){
+        greatestNum = n2;
+    }
+    if (greatestNum < n3){
+        greatestNum = n3;
+    }
+    
+    return greatestNum;
+}
+
+bool checkMaxNumPowerOf2(int maxNum){
+    int i = maxNum;
+    while(i % 2 == 0 && i > 0){
+        i /= 2;
+    }
+    
+    if (i == 1){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+int main()
+{    
+    int num1, num2, num3;
+    cout << "Enter The First Number: ";
+    cin >> num1;
+    cout << "Enter The Second Number: ";
+    cin >> num2;
+    cout << "Enter The Third Number: ";
+    cin >> num3;
+    
+    int maxNum = getMaxNum(num1, num2, num3);
+    
+    if (maxNum == num1){
+        cout << "My Name is Aditya";
+    } else if (maxNum == num2){
+        cout << "Factorial of 5 is " <<factorialOf5();
+    } else {
+        if (checkMaxNumPowerOf2(maxNum)){
+            cout << maxNum << " is power of 2";
+        } else {
+            cout << maxNum << " is not power of 2";
+        }
+    }
+    
+    return 0;
+}
+
+Q3. 4 input lena hai unka sum karna hai(input -ve bhi ho sakte hai ) agar unka sum -ve hi ata hai to fir 
+    reverse of 2nd number karna hai agr wo 2nd number -ve hota hai to use positive mai karke uska reverse 
+    nikalna hai (hint: abs(b)) agr sum +ve hota hai to fir 4 ka factorial nikalna hai agar sum 0 hota hai 
+    to fir 4 input ka product nikalna hai.
+
+
+Ans. #include <bits/stdc++.h>
+using namespace std;
+
+//Function Decleration
+
+int getSumOfNums(const int &n1, const int &n2, const int &n3, const int &n4){
+    return n1 + n2 + n3 + n4;
+}
+
+
+int reverseOfNum(int sumOfNum){
+    int sum = 0;
+    
+    for(int i = sumOfNum; i > 0 ; i/=10){
+        int lastDigit = i%10;
+        sum = sum * 10 + lastDigit;
+    }
+    
+    return sum;
+}
+
+int factorialOf4(){
+    int factorial = 1;
+    for (int i = 4; i >= 1; i--){
+        factorial *= i;
+    }
+    return factorial;
+}
+
+
+
+int main()
+{  
+    int num1, num2, num3, num4;
+    cout << "Enter The First Number: ";
+    cin >> num1;
+    cout << "Enter The Second Number: ";
+    cin >> num2;
+    cout << "Enter The Third Number: ";
+    cin >> num3;
+    cout << "Enter The Forth Number: ";
+    cin >> num4;
+    
+    int sumOfNum = getSumOfNums(num1, num2, num3, num4);
+    
+    if (sumOfNum < 0){
+        cout << reverseOfNum(abs(sumOfNum)) << endl;
+    } else if (sumOfNum > 0){
+        cout << factorialOf4() << " is Factorial of 4";
+    }
+    
+    return 0;
+}
+
+Q4.  5 input lena hai agar sum greater than 50 hota hai to ek function call karna hai usme mai 1-50 ka sum nikalna hai, agar less than 50
+     hota hai to fir ek function call karna hai usme 1 input char lene hai aur check karna hai ki wo vowel hai ya nahi. agar equals to 50
+     hota hai then check karna hai sum even tha ya odd.
+
+Ans.#include <bits/stdc++.h>
+using namespace std;
+
+int getSum(const int &n1, const int &n2, const int &n3, const int &n4, const int n5)
+{
+    return n1 + n2 + n3 + n4 + n5;
+}
+
+void printSumOf1To50Num()
+{
+    int sumOfNums = 0;
+    for (int i = 1; i <= 50; i++)
+    {
+        sumOfNums += i;
+    }
+
+    cout << sumOfNums;
+}
+
+void checkVowelOrNot(char ch)
+{
+    if (ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U' || ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+    {
+        cout << ch << " is a Vowel." << endl;
+    }
+}
+
+bool checkSumEvenOdd(const int &sumOfNums)
+{
+    if (sumOfNums % 2 == 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+int main()
+{
+    int num1, num2, num3, num4, num5;
+
+    cout << "Enter First Number: ";
+    cin >> num1;
+
+    cout << "Enter Second Number: ";
+    cin >> num2;
+
+    cout << "Enter Third Number: ";
+    cin >> num3;
+
+    cout << "Enter Forth Number: ";
+    cin >> num4;
+
+    cout << "Enter Fivth Number: ";
+    cin >> num5;
+
+    int sumOfNums = getSum(num1, num2, num3, num4, num5);
+
+    if (sumOfNums > 50)
+    {
+        printSumOf1To50Num();
+    }
+    else if (sumOfNums < 50)
+    {
+        char any_Ch;
+        cout << "Please Enter Any Vowel: ";
+        cin >> any_Ch;
+        // Function to check Vowel
+        checkVowelOrNot(any_Ch);
+    }
+    else
+    {
+        bool isSumEven = checkSumEvenOdd(sumOfNums);
+
+        if (isSumEven)
+        {
+            cout << sumOfNums << " is a Even Number." << endl;
+        }
+        else
+        {
+            cout << sumOfNums << " is Odd Number." << endl;
+        }
+    }
+
+    return 0;
+}
+
+Q5.  user se ek input lena hai agr wo input positive hota hai to fir ek function call karna hai usme 2 values lena hai aur unka swap karna
+     hai, agar input -ve hota hai to fir ek function call karna hai aur check karna hai ki wo entered number pallindrome hai ya nahi, agar
+     wo 0 hota hai to fir ek function call karna hai aur usme ek input lena hai and check karna hai ki wo input powerof2 hai ya nahi.
+
+Ans. #include <bits/stdc++.h>
+using namespace std;
+
+void swapNums(int &n1, int &n2)
+{                 // 2 3
+    n1 = n1 + n2; // n1 = 5
+    n2 = n1 - n2; // 5 - 3 = 2
+    n1 = n1 - n2; // 5 - 2 = 3
+}
+
+bool checkNumPalindromeOrNot(int num)
+{
+    int reverseNum = 0;
+
+    for (int i = num; i > 0; i /= 10)
+    {
+        int lastDigit = i % 10;
+        reverseNum = reverseNum * 10 + lastDigit;
+    }
+
+    // Condition to check is Reverse Number is equal to Original Number
+    if (num == reverseNum)
+        return true;
+    else
+        return false;
+}
+
+void checkNumPowerOf2(const int &anyNum)
+{
+    int i = anyNum;
+    while ((i % 2 == 0) && i > 0)
+    {
+        i /= 2;
+    }
+
+    if (i == 1)
+    {
+        cout << anyNum << " is Power of 2";
+    }
+    else
+    {
+        cout << anyNum << " is not Power of 2";
+    }
+}
+
+int main()
+{
+    int num;
+    cout << "Enter Any Number: ";
+    cin >> num;
+
+    if (num > 0)
+    {
+        int num1, num2;
+        cout << "Now You are in a Program of Swap Two Numbers" << endl;
+        cout << "Enter first Number: ";
+        cin >> num1;
+        cout << "Enter Second Number: ";
+        cin >> num2;
+        cout << "The value of num1 and num2 is " << num1 << " and " << num2 << " before Swap." << endl;
+        swapNums(num1, num2);
+        cout << "The value of num1 and num2 is " << num1 << " and " << num2 << " after Swap." << endl;
+    }
+    else if (num < 0)
+    {
+        num = abs(num);
+        bool isNumPalindrone = checkNumPalindromeOrNot(num);
+
+        if (isNumPalindrone)
+        {
+            cout << "Entered Number is a Palindrome Number";
+        }
+        else
+        {
+            cout << "Entered Number is not a Palindrome Number";
+        }
+    }
+    else
+    {
+        int anyNum;
+        cout << "Please Enter Any Number: ";
+        cin >> anyNum;
+        checkNumPowerOf2(anyNum);
+    }
+
+    return 0;
+}
